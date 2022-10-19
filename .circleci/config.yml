@@ -1,0 +1,66 @@
+version: 2.1
+
+jobs:
+  build-host:
+    machine:
+      image: ubuntu-2004:202010-01
+    steps:
+      - checkout
+      - run:
+          name: Installing AWS CLI
+          command: |
+            sudo apt-get update
+            sudo apt install python3-pip
+            sudo pip3 install awsebcli --upgrade
+      - run: cd ./packages/container && npm install && npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - /container
+  build-marketing:
+    machine:
+      image: ubuntu-2004:202010-01
+    steps:
+      - checkout
+      - run:
+          name: Installing AWS CLI
+          command: |
+            sudo apt-get update
+            sudo apt install python3-pip
+            sudo pip3 install awsebcli --upgrade
+      - run: cd ./packages/marketing && npm install && npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - /marketing
+  # test:
+  #   machine:
+  #     image: ubuntu-2004:202010-01
+  #   steps:
+  #     - attach_workspace:
+  #         at: .
+  #     - checkout
+  #     - run: cd ./app && npm run test
+  #     - persist_to_workspace:
+  #         root: .
+  #         paths:
+  #           - .
+
+  deploy:
+    machine:
+      image: ubuntu-2004:202010-01
+    steps:
+      - attach_workspace:
+          at: .
+      - checkout
+      - run: aws s3 sync ./app/build s3://ci-cd-example
+
+workflows:
+  build_deploy:
+    jobs:
+      - build-host
+      - build-marketing
+      - deploy:
+          requires:
+            - build-host
+            - build-marketing
