@@ -5,7 +5,7 @@ import Album from "./components/Landing/Landing";
 import Pricing from "./components/Pricing/Pricing";
 
 export default function App(): JSX.Element {
-  // console.log("Marketing micro-front-end");
+  console.log("Marketing micro-front-end");
 
   return (
     <>
