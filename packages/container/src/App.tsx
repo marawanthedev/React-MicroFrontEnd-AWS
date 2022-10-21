@@ -1,13 +1,16 @@
 import React from "react";
+import Header from "./components/Header/Header";
 import MarketingApp from "./components/Marketing/MarketingApp";
-
+import { BrowserRouter } from "react-router-dom";
 export default function App() {
   console.log("host of micro-front-end");
 
   return (
+    <BrowserRouter>
     <>
-      <h1>Hi there!</h1>
+      <Header signedIn={true} onSignOut={()=>{}}/>
       <MarketingApp />
     </>
+    </BrowserRouter>
   );
 }
