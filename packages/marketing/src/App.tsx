@@ -14,14 +14,15 @@ export default function App(): JSX.Element {
 
   return (
     <>
-      <StylesProvider  generateClassName={generateClassName}>
         <BrowserRouter>
+      <StylesProvider  generateClassName={generateClassName}>
+
           <Switch>
             <Route exact path="/pricing" component={Pricing} />
             <Route exact path="/" component={Album} />
           </Switch>
-        </BrowserRouter>
       </StylesProvider>
+        </BrowserRouter>
     </>
   );
 }

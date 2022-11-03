@@ -11,7 +11,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-    <StylesProvider generateClassName={generateClassName}>
+    <StylesProvider generateClassNam  e={generateClassName}>
       <Header signedIn={true} onSignOut={()=>{}}/>
       <MarketingApp />
     </StylesProvider>
