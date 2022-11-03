@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-import { StylesProvider,createGenerateClassName } from "@material-ui/core";
+import {StylesProvider,createGenerateClassName} from "@material-ui/core/styles"
 import Album from "./components/Landing/Landing";
 import Pricing from "./components/Pricing/Pricing";
 
