@@ -7,7 +7,7 @@ import {StylesProvider,createGenerateClassName} from "@material-ui/core/styles"
 
 const generateClassName=createGenerateClassName({productionPrefix:"host"})
 
-export default function App() {
+export default function App():JSX.Element{
   console.log("host of micro-front-end");
 
   return (

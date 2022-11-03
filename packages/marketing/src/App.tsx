@@ -6,20 +6,21 @@ import Pricing from "./components/Pricing/Pricing";
 
 // adding different prefix so that each project has a different prefix and avoid colliding with other projects
 const generateClassName=createGenerateClassName({
-  productionPrefix:"ma"
+  productionPrefix:"marketing"
 })
 
 export default function App(): JSX.Element {
   console.log("Marketing micro-front-end");
 
   return (
+    <StylesProvider  generateClassName={generateClassName}>
         <BrowserRouter>
           <Switch>
-      <StylesProvider  generateClassName={generateClassName}>
             <Route exact path="/pricing" component={Pricing} />
             <Route exact path="/" component={Album} />
-      </StylesProvider>
           </Switch>
         </BrowserRouter>
+      </StylesProvider>
+
   );
 }
