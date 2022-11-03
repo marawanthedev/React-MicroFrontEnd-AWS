@@ -13,16 +13,13 @@ export default function App(): JSX.Element {
   console.log("Marketing micro-front-end");
 
   return (
-    <>
         <BrowserRouter>
       <StylesProvider  generateClassName={generateClassName}>
-
           <Switch>
             <Route exact path="/pricing" component={Pricing} />
             <Route exact path="/" component={Album} />
           </Switch>
       </StylesProvider>
         </BrowserRouter>
-    </>
   );
 }
