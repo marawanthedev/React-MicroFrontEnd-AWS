@@ -15,7 +15,9 @@ export default function App(): JSX.Element {
   return (
     <>
       <Router>
-        <StylesProvider generateClassName={generateClassName}>
+        <StylesProvider generateClassName={createGenerateClassName({
+          productionPrefix: "marketing"
+        })}>
           <Route exact path="/pricing" component={Pricing} />
           <Route exact path="/" component={Album} />
         </StylesProvider>
